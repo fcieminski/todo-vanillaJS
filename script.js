@@ -38,3 +38,21 @@ const refreshTasks = () => {
 };
 
 refreshTasks();
+
+const addTask = task =>
+  fetch("http://localhost:3000/tasks", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(task)
+  });
+
+addNewTodoNode.addEventListener("keyup", event => {
+  if (event.code === "Enter" && event.target.value.length > 0) {
+    const task = {};
+    task.title = event.target.value;
+    task.isDone = false;
+    addTask(task).then(() => refreshTasks());
+  }
+});
