@@ -53,6 +53,8 @@ addNewTodoNode.addEventListener("keyup", event => {
     const task = {};
     task.title = event.target.value;
     task.isDone = false;
-    addTask(task).then(() => refreshTasks());
+    addTask(task)
+      .then(() => refreshTasks())
+      .then(() => (event.target.value = ""));
   }
 });
