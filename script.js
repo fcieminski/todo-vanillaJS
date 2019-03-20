@@ -74,3 +74,20 @@ todoList.addEventListener("click", event => {
     removeTask(taskId).then(() => refreshTasks());
   }
 });
+
+const toggleIsDone = (taskId, isDone) =>
+  fetch(`http://localhost:3000/tasks/${taskId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ isDone })
+  });
+
+todoList.addEventListener("change", event => {
+  if (event.target.classList.contains("toggle")) {
+    const taskId = event.target.getAttribute("value");
+    const isDone = event.target.checked;
+    toggleIsDone(taskId, isDone).then(() => refreshTasks());
+  }
+});
