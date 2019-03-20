@@ -58,3 +58,19 @@ addNewTodoNode.addEventListener("keyup", event => {
       .then(() => (event.target.value = ""));
   }
 });
+
+const removeTask = taskId =>
+  fetch(`http://localhost:3000/tasks/${taskId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+
+todoList.addEventListener("click", event => {
+  if (event.target.classList.contains("destroy")) {
+    console.log("działa");
+    const taskId = event.target.getAttribute("data-task-id");
+    removeTask(taskId).then(() => refreshTasks());
+  }
+});
