@@ -1,0 +1,19 @@
+{
+  "tasks": [
+    {
+      "title": "Initial task 1",
+      "isDone": false,
+      "id": 1
+    },
+    {
+      "title": "Initial task 2",
+      "isDone": false,
+      "id": 2
+    },
+    {
+      "title": "Initial task 3",
+      "isDone": false,
+      "id": 3
+    }
+  ]
+}
